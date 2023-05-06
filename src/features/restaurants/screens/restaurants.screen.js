@@ -1,15 +1,18 @@
 import React from "react";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import { StatusBar } from "react-native";
-import List from "../../../components/List";
 import Search from "../../../components/Search";
 import { colors } from "../../../utils/colors";
+import { spacing } from "../../../utils/spacing";
+import RestaurantInfo from "../components/restaurant.info.component";
 
 const RestaurantScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Search />
-      <List />
+      <View style={styles.list}>
+        <RestaurantInfo />
+      </View>
     </SafeAreaView>
   );
 };
@@ -19,6 +22,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     backgroundColor: colors.white,
+  },
+  list: {
+    padding: spacing.md,
   },
 });
 
