@@ -1,8 +1,16 @@
-import { View, StyleSheet } from "react-native";
 import React from "react";
-import { colors } from "../utils/colors";
 import { spacing } from "../utils/spacing";
 import { Searchbar } from "react-native-paper";
+import styled from "styled-components/native";
+
+const StyledSearchBar = styled(Searchbar)`
+  border-radius: 5px;
+  background-color: "transparent";
+`;
+
+const SearchContainer = styled.View`
+  padding: ${(props) => props.theme.space[3]};
+`;
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -10,40 +18,15 @@ const Search = () => {
   const onChangeSearch = (query) => setSearchQuery(query);
 
   return (
-    <View style={styles.searchContainer}>
-      <Searchbar
+    <SearchContainer>
+      <StyledSearchBar
         placeholder="Search"
         onChangeText={onChangeSearch}
         value={searchQuery}
-        style={styles.search}
         elevation={1}
       />
-    </View>
+    </SearchContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.blue,
-    padding: spacing.md,
-  },
-  text: {
-    color: colors.white,
-  },
-  searchContainer: {
-    padding: spacing.md,
-  },
-  search: {
-    borderRadius: 5,
-    backgroundColor: "transparent",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: -1,
-      height: 0,
-    },
-    shadowOpacity: 0.15,
-    shadowRadius: 10,
-  },
-});
 
 export default Search;
