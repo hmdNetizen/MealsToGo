@@ -1,5 +1,4 @@
 import React from "react";
-import { spacing } from "../utils/spacing";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
