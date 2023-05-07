@@ -2,7 +2,6 @@ import React from "react";
 import { StatusBar } from "react-native";
 import Search from "../../../components/Search";
 import { Platform } from "react-native";
-import { colors } from "../../../utils/colors";
 import RestaurantInfoCard from "../components/restaurant.info-card.component";
 import styled from "styled-components/native";
 
@@ -14,7 +13,6 @@ const StyledSafeAreaView = styled.SafeAreaView`
 const ListView = styled.View`
   flex: 1;
   padding: ${(props) => props.theme.space[3]};
-  background-color: ${colors.blue};
 `;
 
 const RestaurantScreen = () => {
