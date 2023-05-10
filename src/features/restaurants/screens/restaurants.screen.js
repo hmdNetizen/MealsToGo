@@ -1,7 +1,6 @@
 import React from "react";
-import { StatusBar } from "react-native";
 import Search from "../../../components/Search";
-import { Platform, FlatList } from "react-native";
+import { FlatList } from "react-native";
 import RestaurantInfoCard from "../components/restaurant.info-card.component";
 import styled from "styled-components/native";
 import Spacer from "../components/spacer/spacer.component";
