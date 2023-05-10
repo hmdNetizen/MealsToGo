@@ -5,6 +5,7 @@ import RestaurantInfoCard from "../components/restaurant.info-card.component";
 import styled from "styled-components/native";
 import Spacer from "../components/spacer/spacer.component";
 import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
+import LoadingIndicator from "../components/utilities/LoadingIndicator.component";
 
 const StyledSafeAreaView = styled.SafeAreaView`
   flex: 1;
@@ -17,20 +18,23 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const RestaurantScreen = () => {
-  const restaurantContext = useContext(RestaurantContext);
+  const { isLoading, error, restaurants } = useContext(RestaurantContext);
 
   return (
     <StyledSafeAreaView>
+      {isLoading && <LoadingIndicator />}
       <Search />
       <RestaurantList
-        data={restaurantContext.restaurants}
-        renderItem={() => (
-          <>
-            <Spacer position="bottom" size="large">
-              <RestaurantInfoCard />
-            </Spacer>
-          </>
-        )}
+        data={restaurants}
+        renderItem={({ item }) => {
+          return (
+            <>
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            </>
+          );
+        }}
         keyExtractor={(item) => item.name}
       />
     </StyledSafeAreaView>
