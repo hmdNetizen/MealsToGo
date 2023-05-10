@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Search from "../../../components/Search";
 import { FlatList } from "react-native";
 import RestaurantInfoCard from "../components/restaurant.info-card.component";
 import styled from "styled-components/native";
 import Spacer from "../components/spacer/spacer.component";
+import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
 
 const StyledSafeAreaView = styled.SafeAreaView`
   flex: 1;
@@ -16,11 +17,13 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const RestaurantScreen = () => {
+  const restaurantContext = useContext(RestaurantContext);
+
   return (
     <StyledSafeAreaView>
       <Search />
       <RestaurantList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]}
+        data={restaurantContext.restaurants}
         renderItem={() => (
           <>
             <Spacer position="bottom" size="large">
