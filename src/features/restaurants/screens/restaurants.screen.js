@@ -18,7 +18,7 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const RestaurantScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { isLoading, restaurants } = useContext(RestaurantsContext);
 
   return (
     <StyledSafeAreaView>
