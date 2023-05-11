@@ -4,8 +4,8 @@ export const locations = {
       {
         geometry: {
           location: {
-            lat: 51.2132707,
-            lng: 4.4168305,
+            lng: 4.402464,
+            lat: 51.219448,
           },
           viewport: {
             northeast: {
@@ -20,25 +20,15 @@ export const locations = {
         },
       },
     ],
-    status: "OK",
   },
   "san francisco": {
     results: [
       {
         geometry: {
-          location: {
-            lat: 37.77361,
-            lng: -122.421622,
-          },
+          location: { lat: 37.7749295, lng: -122.4194155 },
           viewport: {
-            northeast: {
-              lat: 37.7750214302915,
-              lng: -122.4202089697085,
-            },
-            southwest: {
-              lat: 37.7723234697085,
-              lng: -122.4229069302915,
-            },
+            northeast: { lat: 37.812, lng: -122.3482 },
+            southwest: { lat: 37.70339999999999, lng: -122.527 },
           },
         },
       },
@@ -50,8 +40,8 @@ export const locations = {
       {
         geometry: {
           location: {
-            lat: 41.886065,
-            lng: -87.6208832,
+            lng: -87.629799,
+            lat: 41.878113,
           },
           viewport: {
             northeast: {
@@ -66,29 +56,27 @@ export const locations = {
         },
       },
     ],
-    status: "OK",
   },
   toronto: {
     results: [
       {
         geometry: {
           location: {
-            lat: 43.6574337,
-            lng: -79.3832666,
+            lng: -79.383186,
+            lat: 43.653225,
           },
           viewport: {
             northeast: {
-              lat: 43.6588368302915,
-              lng: -79.38194011970849,
+              lat: 43.64794098029149,
+              lng: -79.37325551970848,
             },
             southwest: {
-              lat: 43.6561388697085,
-              lng: -79.38463808029151,
+              lat: 43.6452430197085,
+              lng: -79.37595348029149,
             },
           },
         },
       },
     ],
-    status: "OK",
   },
 };

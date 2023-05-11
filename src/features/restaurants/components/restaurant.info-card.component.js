@@ -14,6 +14,7 @@ import {
   RestaurantCardContent,
   RestaurantCardCover,
   SectionEnd,
+  placeId,
 } from "./restaurant-info-card.styles";
 
 const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -44,7 +45,12 @@ const RestaurantInfoCard = ({ restaurant = {} }) => {
           <Text variant="label">{name}</Text>
           <Rating>
             {ratingArray.map((_rating, index) => (
-              <SvgXml xml={star} key={index} width={20} height={20} />
+              <SvgXml
+                xml={star}
+                key={`star-${placeId}-${index}`}
+                width={20}
+                height={20}
+              />
             ))}
           </Rating>
           <Address>{address}</Address>

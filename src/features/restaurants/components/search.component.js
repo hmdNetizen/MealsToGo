@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Searchbar } from "react-native-paper";
 import styled from "styled-components/native";
 
+import { LocationContext } from "../../../services/location/location.context";
+
 const StyledSearchBar = styled(Searchbar)`
   border-radius: 5px;
-  background-color: "transparent";
+  background-color: transparent;
 `;
 
 const SearchContainer = styled.View`
@@ -12,7 +14,8 @@ const SearchContainer = styled.View`
 `;
 
 const Search = () => {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const { keyword, search } = useContext(LocationContext);
+  const [searchQuery, setSearchQuery] = React.useState(keyword);
 
   const onChangeSearch = (query) => setSearchQuery(query);
 
@@ -21,6 +24,9 @@ const Search = () => {
       <StyledSearchBar
         placeholder="Search"
         onChangeText={onChangeSearch}
+        onSubmitEditing={() => {
+          search(searchQuery);
+        }}
         value={searchQuery}
         elevation={1}
       />

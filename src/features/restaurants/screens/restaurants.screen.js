@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import Search from "../../../components/Search";
 import { FlatList } from "react-native";
 import RestaurantInfoCard from "../components/restaurant.info-card.component";
 import styled from "styled-components/native";
 import Spacer from "../components/spacer/spacer.component";
-import { RestaurantContext } from "../../../services/restaurants/restaurants.context";
+import Search from "../components/search.component";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import LoadingIndicator from "../components/utilities/LoadingIndicator.component";
 
 const StyledSafeAreaView = styled.SafeAreaView`
@@ -18,7 +18,7 @@ const RestaurantList = styled(FlatList).attrs({
 })``;
 
 const RestaurantScreen = () => {
-  const { isLoading, error, restaurants } = useContext(RestaurantContext);
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext);
 
   return (
     <StyledSafeAreaView>

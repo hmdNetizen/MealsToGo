@@ -1,44 +1,45 @@
 import React, { useState, createContext, useEffect } from "react";
-import { locationRequest, transformLocations } from "./location.services";
+import { locationRequest, locationTransform } from "./location.services";
 
-const LocationContext = createContext();
+export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
+  const [keyword, setKeyword] = useState("San Francisco");
+  const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [keyword, setKeyword] = useState("san francisco");
-  const [location, setLocation] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
+
+  const onSearch = (searchKeyword) => {
+    setIsLoading(true);
+    setKeyword(searchKeyword);
+  };
 
   useEffect(() => {
-    onSearch(keyword);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const onSearch = (query) => {
-    setKeyword(query);
-    setIsLoading(true);
-    locationRequest(query)
-      .then(transformLocations)
+    if (!keyword.length) {
+      // don't do anything
+      return;
+    }
+    locationRequest(keyword.toLowerCase())
+      .then(locationTransform)
       .then((result) => {
+        setIsLoading(false);
         setLocation(result);
+        console.log(result);
       })
       .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
         setIsLoading(false);
+        setError(err);
       });
-  };
+  }, [keyword]);
 
   return (
     <LocationContext.Provider
       value={{
-        location,
         isLoading,
         error,
+        location,
+        search: onSearch,
         keyword,
-        onSearch,
       }}
     >
       {children}
