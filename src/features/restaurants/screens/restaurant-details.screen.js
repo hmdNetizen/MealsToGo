@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import RestaurantInfoCard from "../components/restaurant.info-card.component";
 import { List } from "react-native-paper";
 import { ScrollView } from "react-native";
-// import { SafeArea } from "../../../components/utilities/safearea.component";
 
 const RestaurantDetailsScreen = ({ route }) => {
   const { restaurant } = route.params;
@@ -11,12 +10,12 @@ const RestaurantDetailsScreen = ({ route }) => {
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
   const [drinksExpanded, setDrinksExpanded] = useState(false);
   return (
-    // <SafeArea>
     <>
       <RestaurantInfoCard restaurant={restaurant} />
       <ScrollView>
         <List.Accordion
           title="Breakfast"
+          // eslint-disable-next-line react/no-unstable-nested-components
           left={(props) => <List.Icon {...props} icon="bread-slice" />}
           expanded={breakfastExpanded}
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
@@ -26,6 +25,7 @@ const RestaurantDetailsScreen = ({ route }) => {
         </List.Accordion>
         <List.Accordion
           title="Lunch"
+          // eslint-disable-next-line react/no-unstable-nested-components
           left={(props) => <List.Icon {...props} icon="hamburger" />}
           expanded={lunchExpanded}
           onPress={() => setLunchExpanded(!lunchExpanded)}
@@ -36,6 +36,7 @@ const RestaurantDetailsScreen = ({ route }) => {
         </List.Accordion>
         <List.Accordion
           title="Dinner"
+          // eslint-disable-next-line react/no-unstable-nested-components
           left={(props) => <List.Icon {...props} icon="food" />}
           expanded={dinnerExpanded}
           onPress={() => setDinnerExpanded(!dinnerExpanded)}
@@ -46,6 +47,7 @@ const RestaurantDetailsScreen = ({ route }) => {
         </List.Accordion>
         <List.Accordion
           title="Drinks"
+          // eslint-disable-next-line react/no-unstable-nested-components
           left={(props) => <List.Icon {...props} icon="cup" />}
           expanded={drinksExpanded}
           onPress={() => setDrinksExpanded(!drinksExpanded)}
@@ -58,7 +60,6 @@ const RestaurantDetailsScreen = ({ route }) => {
         </List.Accordion>
       </ScrollView>
     </>
-    // </SafeArea>
   );
 };
 

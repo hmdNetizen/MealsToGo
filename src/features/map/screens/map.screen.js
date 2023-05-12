@@ -4,7 +4,6 @@ import styled from "styled-components/native";
 import Search from "./components/search.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { LocationContext } from "../../../services/location/location.context";
-import { View, Text } from "react-native";
 import MapCallOut from "./components/map-callout.component";
 
 const Map = styled(MapView)`
