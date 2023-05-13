@@ -29,7 +29,9 @@ const RestaurantScreen = ({ navigation }) => {
         isFavoriteToggled={toggle}
         onFavoriteToggled={() => setToggle(!toggle)}
       />
-      {toggle && <FavoritesBar />}
+      {toggle && (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      )}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
