@@ -10,6 +10,7 @@ import { theme } from "./src/infrastructure/theme";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import AppNavigation from "./src/features/navigation";
+import { FavoriteContextProvider } from "./src/services/favorites/favorites.context";
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -26,11 +27,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <AppNavigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
+        <FavoriteContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <AppNavigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavoriteContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
