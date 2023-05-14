@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -13,6 +13,7 @@ import AppNavigation from "./src/features/navigation";
 import { FavoriteContextProvider } from "./src/services/favorites/favorites.context";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -31,19 +32,6 @@ if (!firebase.apps.length) {
 export default function App() {
   const [isAutheticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword("hameed@gmail.com", "Test123")
-        .then((user) => {
-          console.log(user);
-          setIsAuthenticated(true);
-        })
-        .catch((error) => console.log(error));
-    }, 2000);
-  }, []);
-
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -55,20 +43,18 @@ export default function App() {
     return null;
   }
 
-  if (!isAutheticated) {
-    return null;
-  }
-
   return (
     <>
       <ThemeProvider theme={theme}>
-        <FavoriteContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <AppNavigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavoriteContextProvider>
+        <AuthenticationContextProvider>
+          <FavoriteContextProvider>
+            <LocationContextProvider>
+              <RestaurantsContextProvider>
+                <AppNavigation />
+              </RestaurantsContextProvider>
+            </LocationContextProvider>
+          </FavoriteContextProvider>
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
