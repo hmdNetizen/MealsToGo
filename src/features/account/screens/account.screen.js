@@ -1,25 +1,35 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { Button } from "react-native-paper";
+import Spacer from "../../restaurants/components/spacer/spacer.component";
 import {
   AccountBackground,
   AccountContainer,
   AccountOverlay,
   AuthButton,
+  Title,
 } from "../components/account.styles";
 
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountOverlay />
+      <Title>Meals To Go</Title>
       <AccountContainer>
         <AuthButton
-          icon="lock"
+          icon="lock-outline"
           mode="contained"
-          onPress={() => console.log("Pressed")}
+          onPress={() => navigation.navigate("Login")}
         >
           Login
         </AuthButton>
+        <Spacer size="large">
+          <AuthButton
+            icon="email-outline"
+            mode="contained"
+            onPress={() => navigation.navigate("Register")}
+          >
+            Register
+          </AuthButton>
+        </Spacer>
       </AccountContainer>
     </AccountBackground>
   );
