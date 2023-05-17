@@ -1,14 +1,28 @@
 import React, { useContext } from "react";
+import { Text, Button } from "react-native";
+import { List } from "react-native-paper";
+
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { SafeArea } from "../../../components/utilities/safearea.component";
-import { Text, Button } from "react-native";
 
 function SettingsScreen() {
   const { onLogout } = useContext(AuthenticationContext);
   return (
     <SafeArea>
-      <Text>Settings!</Text>
-      <Button title="Logout" onPress={onLogout} />
+      <List.Section>
+        <List.Item
+          title="Favorites"
+          style={{ padding: 16 }}
+          description="View your favorites"
+          left={() => <List.Icon icon="heart" color="black" />}
+        />
+        <List.Item
+          title="Logout"
+          style={{ padding: 16 }}
+          left={() => <List.Icon icon="logout" color="black" />}
+          onPress={onLogout}
+        />
+      </List.Section>
     </SafeArea>
   );
 }
