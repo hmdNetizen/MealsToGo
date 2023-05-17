@@ -4,6 +4,8 @@ import { List, Avatar } from "react-native-paper";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { SafeArea } from "../../../components/utilities/safearea.component";
+import Spacer from "../../restaurants/components/spacer/spacer.component";
+import { Text } from "../../restaurants/components/typography/text.component";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -13,18 +15,22 @@ const AvatarContainer = styled.View`
   align-items: center;
 `;
 
-function SettingsScreen() {
-  const { onLogout } = useContext(AuthenticationContext);
+function SettingsScreen({ navigation }) {
+  const { user, onLogout } = useContext(AuthenticationContext);
   return (
     <SafeArea>
       <AvatarContainer>
         <Avatar.Icon icon="human" size={180} />
+        <Spacer position="top" size="large">
+          <Text variant="label">{user.user.email}</Text>
+        </Spacer>
       </AvatarContainer>
       <List.Section>
         <SettingsItem
           title="Favorites"
           description="View your favorites"
           left={() => <List.Icon icon="heart" color="black" />}
+          onPress={() => navigation.navigate("Favorites")}
         />
         <SettingsItem
           title="Logout"

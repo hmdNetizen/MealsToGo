@@ -9,12 +9,7 @@ import LoadingIndicator from "../components/utilities/LoadingIndicator.component
 import { SafeArea } from "../../../components/utilities/safearea.component";
 import { FavoriteContext } from "../../../services/favorites/favorites.context";
 import FavoritesBar from "../../../components/favorites/favorites-bar.component";
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import { RestaurantList } from "../components/restaurants-list.component";
 
 const RestaurantScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
