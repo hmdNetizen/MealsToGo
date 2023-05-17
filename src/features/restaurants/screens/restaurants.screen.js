@@ -10,6 +10,7 @@ import { SafeArea } from "../../../components/utilities/safearea.component";
 import { FavoriteContext } from "../../../services/favorites/favorites.context";
 import FavoritesBar from "../../../components/favorites/favorites-bar.component";
 import { RestaurantList } from "../components/restaurants-list.component";
+import FadeInView from "../../../components/animations/fade.animation";
 
 const RestaurantScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
@@ -27,6 +28,7 @@ const RestaurantScreen = ({ navigation }) => {
       {toggle && (
         <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
       )}
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
@@ -40,7 +42,9 @@ const RestaurantScreen = ({ navigation }) => {
                     })
                   }
                 >
-                  <RestaurantInfoCard restaurant={item} />
+                  <FadeInView>
+                    <RestaurantInfoCard restaurant={item} />
+                  </FadeInView>
                 </TouchableOpacity>
               </Spacer>
             </>
