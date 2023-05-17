@@ -29,11 +29,13 @@ function SettingsScreen({ navigation }) {
         <SettingsItem
           title="Favorites"
           description="View your favorites"
+          // eslint-disable-next-line react/no-unstable-nested-components
           left={() => <List.Icon icon="heart" color="black" />}
           onPress={() => navigation.navigate("Favorites")}
         />
         <SettingsItem
           title="Logout"
+          // eslint-disable-next-line react/no-unstable-nested-components
           left={() => <List.Icon icon="logout" color="black" />}
           onPress={onLogout}
         />
