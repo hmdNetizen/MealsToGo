@@ -1,9 +1,13 @@
-const { locations: locationMock } = require("./geocode.mock");
 const url = require("url");
+const cors = require("cors")({ origin: true });
+const { locations: locationsMock } = require("./geocode.mock");
 
 module.exports.geoCodeRequest = (request, response) => {
-  const { city } = url.parse(request.url, true).query;
-  const location = locationMock[city.toLowerCase()];
+  cors(request, response, () => {
+    // Your code here
+    const { city } = url.parse(request.url, true).query;
+    const locationMock = locationsMock[city.toLowerCase()];
 
-  response.json(JSON.stringify(location));
+    response.json(locationMock);
+  });
 };
